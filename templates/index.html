@@ -14,13 +14,13 @@
             font-size: 12px;
         }
 
-		.torrent-table th {
+        .torrent-table th {
             font-size: 13px;
             font-weight: normal;
             padding: 8px;
             border-bottom: 1px solid #ffffff;
             color: #039;
-		}
+        }
 
         #finished-torrent-table th {
             background: #b9c9fe;
@@ -28,8 +28,8 @@
         }
 
         #unfinished-torrent-table th {
-			background: #a7c942;
-			border-top: 4px solid #b7bc42;
+            background: #a7c942;
+            border-top: 4px solid #b7bc42;
         }
 
         .torrent-table td {
@@ -44,7 +44,7 @@
         }
 
         #unfinished-torrent-table td {
-			background: #eaf2D3;
+            background: #eaf2D3;
         }
 
         .torrent-table tr:hover td {
@@ -52,38 +52,38 @@
             color: #339;
         }
     </style>
-	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-	<script type="text/javascript">
-		$(document).ready(function() {
-			var max = undefined;
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            var max = undefined;
 
-			$('table').each(function(index, value) {
-				var cur_width = $(value).width();
-				if (!max || max < cur_width) {
-					max = cur_width;
-				}
-			});
+            $('table').each(function(index, value) {
+                var cur_width = $(value).width();
+                if (!max || max < cur_width) {
+                    max = cur_width;
+                }
+            });
 
-			$('table').each(function(index, value) {
-				$(value).width(max);
-			});
-		});
-	</script>
+            $('table').each(function(index, value) {
+                $(value).width(max);
+            });
+        });
+    </script>
 
 </head>
 
 <body>
-	{% for torrentlist in torrentlists %}
-	{% if torrentlist.torrents %}
-	<table class="torrent-table" id="{{ torrentlist.type }}-torrent-table">
+    {% for torrentlist in torrentlists %}
+    {% if torrentlist.torrents %}
+    <table class="torrent-table" id="{{ torrentlist.type }}-torrent-table">
         <thead>
             <tr>
                 <th scope="col">Name</th>
                 <th scope="col">State</th>
-				{% if torrentlist.type == "unfinished" %}
+                {% if torrentlist.type == "unfinished" %}
                 <th scope="col">Download speed</th>
                 <th scope="col">Time remaining</th>
-				{% endif %}
+                {% endif %}
                 <th scope="col">Completed</th>
                 <th scope="col">Percentage</th>
                 <th scope="col">Ratio</th>
@@ -94,10 +94,10 @@
             <tr>
                 <td>{{ t.name }}</td>
                 <td>{{ t.state }}</td>
-				{% if torrentlist.type == "unfinished" %}
-				<td>{{ t.down_rate }}</td>
-				<td>{{ t.time_remaining }}</td>
-				{% endif %}
+                {% if torrentlist.type == "unfinished" %}
+                <td>{{ t.down_rate }}</td>
+                <td>{{ t.time_remaining }}</td>
+                {% endif %}
                 <td>{{ t.completed_bytes }}/{{ t.total_bytes }}</td>
                 <td>{{ t.percentage }} &#37;</td>
                 <td>{{ t.ratio }}</td>
@@ -105,9 +105,9 @@
             {% endfor %}
         </tbody>
     </table>
-	<br />
-	{% endif %}
-	{% endfor %}
+    <br />
+    {% endif %}
+    {% endfor %}
 </body>
 
 </html>
