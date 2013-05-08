@@ -9,4 +9,5 @@ type -P virtualenv &> /dev/null || {
 }
 
 virtualenv --no-site-packages --distribute "${project_dir}/virtualenv"
-pip -E "${project_dir}/virtualenv" install -r "${project_dir}/requirements.txt"
+source "${project_dir}/virtualenv/bin/activate"
+pip install -r "${project_dir}/requirements.txt"
